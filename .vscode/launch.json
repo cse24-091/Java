@@ -3,12 +3,11 @@
     "configurations": [
         {
             "type": "java",
-            "name": "JavaFX Launch",
+            "name": "Main (JavaFX)",
             "request": "launch",
-            "mainClass": "boundary.Main",
-            "projectName": "Java_78d1e0c5", 
-            "classPaths": ["${workspaceFolder}/out"],
-            "vmArgs": "--module-path \"C:\\Users\\Kago\\Documents\\GitHub\\Java\\javafx-sdk-21.0.8\\lib\" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics"
+            "mainClass": "hellofx.Main",
+            "projectName": "Java_78d1e0c5",
+            "vmArgs": "--module-path \"C:\\Users\\Kago\\Desktop\\New folder\\images\\openjfx-21.0.8_windows-x64_bin-sdk\\javafx-sdk-21.0.8\\lib\" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics"
         }
     ]
 }

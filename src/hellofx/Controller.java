@@ -1,4 +1,4 @@
-package boundary;
+package hellofx;
 
 public class Controller {
 
