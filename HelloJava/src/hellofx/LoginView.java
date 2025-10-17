@@ -22,7 +22,6 @@ public class LoginView {
         passwordField.setPromptText("Password");
 
         Button loginButton = new Button("Login");
-
         messageLabel = new Label();
         messageLabel.setStyle("-fx-text-fill: red;");
 
@@ -39,8 +38,9 @@ public class LoginView {
             String username = usernameField.getText();
             String password = passwordField.getText();
 
-            // No business logic — just switch screen
             if (!username.isEmpty() && !password.isEmpty()) {
+                // Save basic login info (we’ll add account details later)
+                DataManager.saveAccount(username, password, "Savings", "Gaborone", "C001", 1000.0);
                 new AccountView().start(stage);
             } else {
                 messageLabel.setText("Please enter username and password.");
