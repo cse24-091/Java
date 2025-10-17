@@ -7,14 +7,17 @@ public class Customer {
     private String phoneNumber;
     private String email;
     private int customerId;
+    private Branch branch; // branch association
     private List<Account> accounts;
 
-    public Customer(String name, String address, String phoneNumber, String email, int customerId) {
+    // Constructor requires a Branch object
+    public Customer(String name, String address, String phoneNumber, String email, int customerId, Branch branch) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.customerId = customerId;
+        this.branch = branch;
         this.accounts = new ArrayList<>();
     }
 
@@ -33,5 +36,18 @@ public class Customer {
 
     public String getName() {
         return name;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer ID: " + customerId + ", Name: " + name + ", Branch: " + branch.getBranchName();
     }
 }
