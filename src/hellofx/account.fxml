@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hellofx.AccountView"
+            prefWidth="600" prefHeight="450">
+
+    <children>
+        <Label text="Account Number:" layoutX="50" layoutY="40" />
+        <TextField fx:id="accountNumberField" layoutX="200" layoutY="35" prefWidth="300" />
+
+        <Label text="Balance:" layoutX="50" layoutY="90" />
+        <TextField fx:id="balanceField" layoutX="200" layoutY="85" prefWidth="300" />
+
+        <Label text="Account Type:" layoutX="50" layoutY="140" />
+        <TextField fx:id="accountTypeDisplay" layoutX="200" layoutY="135" prefWidth="150" editable="false" />
+        <ComboBox fx:id="accountTypeCombo" layoutX="370" layoutY="135" prefWidth="130" />
+
+        <Label text="Branch:" layoutX="50" layoutY="190" />
+        <TextField fx:id="branchDisplay" layoutX="200" layoutY="185" prefWidth="150" editable="false" />
+        <ComboBox fx:id="branchCombo" layoutX="370" layoutY="185" prefWidth="130" />
+
+        <Label text="Customer ID:" layoutX="50" layoutY="240" />
+        <TextField fx:id="customerIdDisplay" layoutX="200" layoutY="235" prefWidth="150" editable="false" />
+        <ComboBox fx:id="customerIdCombo" layoutX="370" layoutY="235" prefWidth="130" />
+
+        <!-- Buttons -->
+        <HBox layoutX="100" layoutY="320" spacing="20">
+            <Button text="Insert" fx:id="insertBtn" />
+            <Button text="Delete" fx:id="deleteBtn" />
+            <Button text="Update" fx:id="updateBtn" />
+            <Button text="Search" fx:id="searchBtn" />
+            <Button text="List" fx:id="listBtn" />
+        </HBox>
+    </children>
+</AnchorPane>

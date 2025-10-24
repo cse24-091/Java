@@ -1,0 +1,2 @@
+AC5307,800.0,Cheque,Gaborone,CU3332
+AC4003,1000.0,Savings,Orapa,CU1354
