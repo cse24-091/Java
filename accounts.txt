@@ -1,2 +1,3 @@
-AC5307,800.0,Cheque,Gaborone,CU3332
-AC4003,1000.0,Savings,Orapa,CU1354
+admin,1234,Savings,Gaborone,C001,1000.0
+Katlego,1112,Savings,Gaborone,C001,1000.0
+admin,123,Savings,Gaborone,C001,1000.0

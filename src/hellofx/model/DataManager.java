@@ -9,50 +9,27 @@ public class DataManager {
     private static final String CUSTOMER_FILE = "customers.txt";
     private static final String TRANSACTION_FILE = "transactions.txt";
 
-    // 🔹 Save a new customer and account
-    public static void saveAccount(String customerName, String password, String customerType, String accountType,
-                                   String branch, double balance, String taxId,
-                                   String sourceOfIncome, String signatory, String idNumber) {
-
-        String accountNumber = "AC" + (1000 + new Random().nextInt(9000));
-        String customerID = "CU" + (1000 + new Random().nextInt(9000));
+    public static void saveAccount(String customerName, String password, String customerType, String accountType, String branch, double balance, String taxId, String sourceOfIncome, String signatory, String idNumber) {
+        Random rand = new Random();
+        String accountNumber = "AC" + (1000 + rand.nextInt(9000));
+        String customerID = "CU" + (1000 + rand.nextInt(9000));
         String createdDate = getFormattedDateTime();
 
-        // 🧾 Save to customers.txt
         try (PrintWriter out = new PrintWriter(new FileWriter(CUSTOMER_FILE, true))) {
-            String line = String.join(",", Arrays.asList(
-                    customerID,              // 0
-                    customerName,            // 1
-                    password,                // 2
-                    customerType,            // 3
-                    taxId != null ? taxId : "",         // 4
-                    sourceOfIncome != null ? sourceOfIncome : "", // 5
-                    signatory != null ? signatory : "", // 6
-                    idNumber != null ? idNumber : "",   // 7
-                    createdDate,             // 8
-                    accountNumber            // 9 (link to account)
-            ));
+            String line = String.join(",", Arrays.asList(customerID, customerName, password, customerType, taxId, sourceOfIncome, signatory, idNumber, createdDate, accountNumber));
             out.println(line);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // 🏦 Save to accounts.txt
         try (PrintWriter out = new PrintWriter(new FileWriter(ACCOUNT_FILE, true))) {
-            String line = String.join(",", Arrays.asList(
-                    accountNumber,           // 0
-                    String.valueOf(balance), // 1
-                    accountType,             // 2
-                    branch,                  // 3
-                    customerID               // 4
-            ));
+            String line = String.join(",", Arrays.asList(accountNumber, String.valueOf(balance), accountType, branch, customerID));
             out.println(line);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // 🔹 Load all customers
     public static List<String[]> loadCustomers() {
         List<String[]> customers = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(CUSTOMER_FILE))) {
@@ -61,12 +38,11 @@ public class DataManager {
                 customers.add(line.split(",", -1));
             }
         } catch (IOException e) {
-            // ignore if file missing
+            e.printStackTrace();
         }
         return customers;
     }
 
-    // 🔹 Load all accounts
     public static List<String[]> loadAccounts() {
         List<String[]> accounts = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(ACCOUNT_FILE))) {
@@ -75,12 +51,11 @@ public class DataManager {
                 accounts.add(line.split(",", -1));
             }
         } catch (IOException e) {
-            // ignore if file missing
+            e.printStackTrace();
         }
         return accounts;
     }
 
-    // 🔹 Find customer by username/password and get their linked account
     public static String[] getCustomerAccountByCredentials(String username, String password) {
         String[] customer = null;
         try (BufferedReader br = new BufferedReader(new FileReader(CUSTOMER_FILE))) {
@@ -96,18 +71,17 @@ public class DataManager {
             e.printStackTrace();
         }
 
-        if (customer == null) return null;
+        if (customer == null || customer.length < 10) return null;
 
-        String linkedAccountNumber = customer.length > 9 ? customer[9] : "";
+        String accountNumber = customer[9];
         for (String[] acc : loadAccounts()) {
-            if (acc[0].equals(linkedAccountNumber)) {
-                return acc; // return the account details
+            if (acc[0].equals(accountNumber)) {
+                return acc;
             }
         }
         return null;
     }
 
-    // 🔹 Save transaction
     public static void saveTransaction(String accountNumber, String type, double amount, double balance) {
         try (PrintWriter out = new PrintWriter(new FileWriter(TRANSACTION_FILE, true))) {
             String date = getFormattedDateTime();
@@ -118,26 +92,25 @@ public class DataManager {
         }
     }
 
-    // 🔹 Load all transactions for an account
     public static List<String[]> loadTransactions(String accountNumber) {
         List<String[]> transactions = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(TRANSACTION_FILE))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",", -1);
-                if (parts[0].equals(accountNumber)) transactions.add(parts);
+                if (parts[0].equals(accountNumber)) {
+                    transactions.add(parts);
+                }
             }
         } catch (IOException e) {
-            // ignore if file missing
+            e.printStackTrace();
         }
         return transactions;
     }
 
-    // 🔹 Update account balance
     public static boolean updateBalance(String accountNumber, double newBalance) {
         List<String[]> accounts = loadAccounts();
         boolean updated = false;
-
         try (PrintWriter out = new PrintWriter(new FileWriter(ACCOUNT_FILE))) {
             for (String[] acc : accounts) {
                 if (acc[0].equals(accountNumber)) {
@@ -149,12 +122,29 @@ public class DataManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return updated;
     }
 
-    // 🔹 Utility: Format current date and time
     public static String getFormattedDateTime() {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
+
+    // ✅ NEW METHOD: getAccountByCredentials
+    public static String[] getAccountByCredentials(String username, String password) {
+        return getCustomerAccountByCredentials(username, password);
+    }
+
+    // ✅ NEW METHOD: deleteAccount
+    public static void deleteAccount(String accountNumber) {
+        List<String[]> accounts = loadAccounts();
+        try (PrintWriter out = new PrintWriter(new FileWriter(ACCOUNT_FILE))) {
+            for (String[] acc : accounts) {
+                if (!acc[0].equals(accountNumber)) {
+                    out.println(String.join(",", acc));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
