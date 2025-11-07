@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
@@ -14,17 +13,3 @@
         "c:\\Users\\Kago\\Desktop\\New folder\\images\\openjfx-21.0.8_windows-x64_bin-sdk\\javafx-sdk-21.0.8\\lib\\javafx-swt.jar"
     ]
 }
-=======
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "javafx-sdk-21.0.8/lib/javafx.base.jar",
-        "javafx-sdk-21.0.8/lib/javafx.controls.jar",
-        "javafx-sdk-21.0.8/lib/javafx.fxml.jar",
-        "javafx-sdk-21.0.8/lib/javafx.graphics.jar",
-        "javafx-sdk-21.0.8/lib/javafx.media.jar",
-        "javafx-sdk-21.0.8/lib/javafx.swing.jar",
-        "javafx-sdk-21.0.8/lib/javafx.web.jar",
-        "javafx-sdk-21.0.8/lib/javafx-swt.jar"
-    ]
-}
->>>>>>> 5a9b50a5d3b7702d8e77ec9e11f844b8cf68690d

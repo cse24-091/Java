@@ -1,3 +1,6 @@
 admin,1234,Savings,Gaborone,C001,1000.0
 Katlego,1112,Savings,Gaborone,C001,1000.0
 admin,123,Savings,Gaborone,C001,1000.0
+AC4066,100.0,Savings,Francistown,CU5774
+AC8552,600.0,Investment,Francistown,CU3611
+AC2209,300.0,Investment,Orapa,CU2647

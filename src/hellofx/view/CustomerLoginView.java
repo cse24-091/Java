@@ -1,6 +1,6 @@
 package hellofx.view;
 
-import hellofx.AccountView;
+import hellofx.view.AccountView;
 import hellofx.model.DataManager;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

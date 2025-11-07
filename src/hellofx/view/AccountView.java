@@ -1,4 +1,4 @@
-package hellofx;
+package hellofx.view;
 
 import hellofx.model.DataManager;
 import javafx.collections.FXCollections;

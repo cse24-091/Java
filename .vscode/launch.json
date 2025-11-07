@@ -6,11 +6,7 @@
             "name": "Main (JavaFX)",
             "request": "launch",
             "mainClass": "hellofx.Main",
-<<<<<<< HEAD
             "projectName": "HelloJava_b034d12a",
-=======
-            "projectName": "Java_78d1e0c5",
->>>>>>> 5a9b50a5d3b7702d8e77ec9e11f844b8cf68690d
             "vmArgs": "--module-path \"C:\\Users\\Kago\\Desktop\\New folder\\images\\openjfx-21.0.8_windows-x64_bin-sdk\\javafx-sdk-21.0.8\\lib\" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics"
         }
     ]
