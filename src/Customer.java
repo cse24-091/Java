@@ -1,4 +1,3 @@
-package hellofx.src;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,16 +8,20 @@ public class Customer {
     private String email;
     private int customerId;
     private Branch branch; // branch association
+    private String sourceOfIncome;
+    private String taxId;
     private List<Account> accounts;
 
     // Constructor requires a Branch object
-    public Customer(String name, String address, String phoneNumber, String email, int customerId, Branch branch) {
+    public Customer(String name, String address, String phoneNumber, String email, int customerId, Branch branch, String sourceOfIncome, String taxId) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.customerId = customerId;
         this.branch = branch;
+        this.sourceOfIncome = sourceOfIncome;
+        this.taxId = taxId;
         this.accounts = new ArrayList<>();
     }
 
@@ -47,8 +50,20 @@ public class Customer {
         return branch;
     }
 
+    public String getSourceOfIncome() {
+        return sourceOfIncome;
+    }
+
+    public String getTaxId() {
+        return taxId;
+    }
+
     @Override
     public String toString() {
-        return "Customer ID: " + customerId + ", Name: " + name + ", Branch: " + branch.getBranchName();
+        return "Customer ID: " + customerId +
+               ", Name: " + name +
+               ", Branch: " + branch.getBranchName() +
+               ", Tax ID: " + taxId +
+               ", Income Source: " + sourceOfIncome;
     }
 }

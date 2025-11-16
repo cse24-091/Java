@@ -1,4 +1,3 @@
-package hellofx.src;
 public class Teller {
     private String name;
 

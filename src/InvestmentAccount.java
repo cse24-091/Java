@@ -1,4 +1,3 @@
-package hellofx.src;
 public class InvestmentAccount extends Account {
     private double interestRate;
     private static final double MINIMUM_DEPOSIT = 500.0;

@@ -1,4 +1,3 @@
-package hellofx.src;
 public class TestBankingSystem {
     public static void main(String[] args) {
         try {
@@ -8,14 +7,16 @@ public class TestBankingSystem {
             // Create a branch
             Branch gaboroneBranch = new Branch("B001", "Gaborone Main", "Gaborone");
 
-            // Create a customer and assign the branch
+            // Create a customer and assign the branch (with sourceOfIncome and taxId)
             Customer customer = new Customer(
                 "Katlego Lechiile",
                 "Gaborone",
                 "71234567",
                 "katlego@bank.com",
                 1001,
-                gaboroneBranch
+                gaboroneBranch,
+                "Software Consulting",     // sourceOfIncome
+                "BW-TAX-2025-001"          // taxId
             );
 
             // Add customer to branch

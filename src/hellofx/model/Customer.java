@@ -1,4 +1,4 @@
-package hellofx;
+package hellofx.model;
 
 public class Customer {
     private String customerID;
